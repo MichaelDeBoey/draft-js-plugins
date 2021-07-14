@@ -170,12 +170,23 @@ export default function Mention(): ReactElement {
         <div className={styles.param}>
           <span className={styles.paramName}>positionSuggestions</span>
           <span>
-            The function can be used to manipulate the position of the popover
-            containing the suggestions. It receives one object as arguments
-            containing the visible rectangle surrounding the decorated search
-            string including the @. In addition the object contains prevProps
-            and props. An object should be returned which can contain all sorts
-            of styles. The defined properties will be applied as inline-styles.
+            <b>Deprecated, use popperOptions instead</b> The function can be
+            used to manipulate the position of the popover containing the
+            suggestions. It receives one object as arguments containing the
+            visible rectangle surrounding the decorated search string including
+            the @. In addition the object contains prevProps and props. An
+            object should be returned which can contain all sorts of styles. The
+            defined properties will be applied as inline-styles.
+          </span>
+        </div>
+        <div className={styles.param}>
+          <span className={styles.paramName}>popperOptions</span>
+          <span>
+            This options will be used to initialize popper.js. Read in detail
+            about it{' '}
+            <ExternalLink href=" https://popper.js.org/docs/v2/">
+              here.
+            </ExternalLink>
           </span>
         </div>
         <div className={styles.param}>
@@ -276,8 +287,24 @@ export default function Mention(): ReactElement {
           <div className={styles.param}>
             <span className={styles.paramName}>popoverComponent</span>
             <span>
+              <b>Deprecated, use popperOptions/popoverContainer instead</b>{' '}
               Component to be used as the template for the popover (the parent
               of entryComponent). Defaults to a div.
+            </span>
+          </div>
+          <div className={styles.param}>
+            <span className={styles.paramName}>popoverContainer</span>
+            <span>
+              Defaults to a div which is bound to popper.js. If don&apos;t want
+              to have a popover you can overwrite the component with you own.
+            </span>
+          </div>
+          <div className={styles.param}>
+            <span className={styles.paramName}>renderEmptyPopup</span>
+            <span>
+              If set to true if will render the popup even if there are no
+              mentions to show. This can for example be used to show a message
+              that there are no matching mentions.
             </span>
           </div>
           <div className={styles.param}>
@@ -313,58 +340,73 @@ export default function Mention(): ReactElement {
         <Heading level={2}>Simple Example</Heading>
         <SimpleMentionEditor />
         <Code
-          code={(simpleExampleCode as unknown) as string}
+          code={simpleExampleCode as unknown as string}
           name="SimpleMentionEditor.tsx"
         />
         <Code
-          code={(simpleExampleMentionsCode as unknown) as string}
+          code={simpleExampleMentionsCode as unknown as string}
           name="Mentions.ts"
         />
-        <Code code={simpleExampleEditorStylesCode} name="editorStyles.css" />
+        <Code
+          code={simpleExampleEditorStylesCode}
+          name="SimpleMentionEditor.module.css"
+        />
       </Container>
       <Container>
         <Heading level={2}>Custom Themed Mention Example</Heading>
         <CustomMentionEditor />
         <Code
-          code={(customExampleCode as unknown) as string}
+          code={customExampleCode as unknown as string}
           name="CustomMentionEditor.ts"
         />
         <Code
           code={customExampleMentionsStylesCode}
-          name="mentionsStyles.css"
+          name="MentionsStyles.module.css"
         />
         <Code
-          code={(customExampleMentionsCode as unknown) as string}
+          code={customExampleMentionsCode as unknown as string}
           name="Mentions.ts"
         />
-        <Code code={customExampleEditorStylesCode} name="editorStyles.css" />
+        <Code
+          code={customExampleEditorStylesCode}
+          name="CustomMentionEditor.module.css"
+        />
       </Container>
       <Container>
         <Heading level={2}>Remote Data Mention Example</Heading>
         <RemoteMentionEditor />
         <Code
-          code={(remoteExampleCode as unknown) as string}
+          code={remoteExampleCode as unknown as string}
           name="RemoteMentionEditor.tsx"
         />
-        <Code code={remoteExampleEditorStylesCode} name="editorStyles.css" />
+        <Code
+          code={remoteExampleEditorStylesCode}
+          name="RemoteMentionEditor.module.css"
+        />
       </Container>
       <Container>
         <Heading level={2}>Custom Mention Component Example</Heading>
         <CustomComponentMentionEditor />
         <Code
-          code={(customComponentExampleCode as unknown) as string}
+          code={customComponentExampleCode as unknown as string}
           name="CustomComponentMentionEditor.tsx"
         />
-        <Code code={customComponentExampleStylesCode} name="editorStyles.css" />
+        <Code
+          code={customComponentExampleStylesCode}
+          name="CustomComponentMentionEditor.module.css"
+        />
       </Container>
       <Container>
         <Heading level={2}>Multi Mention Triggers</Heading>
         <MultiMentionTriggers />
         <Code
-          code={(multiComponentExampleCode as unknown) as string}
+          code={multiComponentExampleCode as unknown as string}
           name="MultiMentionTriggers.tsx"
         />
-        <Code code={multiComponentExampleStylesCode} name="editorStyles.css" />
+        <Code
+          code={multiComponentExampleStylesCode}
+          name="MultiMentionTriggers.module.css"
+        />
       </Container>
     </PluginPageFrame>
   );

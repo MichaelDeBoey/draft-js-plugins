@@ -7,6 +7,22 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
+## 4.5.5
+
+- add `sideEffects` for css files [#1833](https://github.com/draft-js-plugins/draft-js-plugins/issues/1833)
+
+## 4.5.4
+
+- add `disableInlineEmojis` to disable inline emoji suggestions [#2028](https://github.com/draft-js-plugins/draft-js-plugins/issues/2028)
+
+## 4.5.2
+
+- replace react-custom-scrollbars with react-custom-scrollbars-2 [#2032](https://github.com/draft-js-plugins/draft-js-plugins/issues/2032)
+
+## 4.5.1
+
+- add `findWithRegex` from `@draft-js-plugins/utils` to replace the package `find-with-regex` [#2006](https://github.com/draft-js-plugins/draft-js-plugins/issues/2006)
+
 ## 4.5.0
 
 - fixing issue with build for commen js bundels [#1976](https://github.com/draft-js-plugins/draft-js-plugins/issues/1976)

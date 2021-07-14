@@ -1,7 +1,9 @@
 {
   "name": "@draft-js-plugins/mention",
-  "version": "4.4.0",
-  "sideEffects": false,
+  "version": "4.5.2",
+  "sideEffects": [
+    "*.css"
+  ],
   "description": "Mention Plugin for DraftJS",
   "author": {
     "name": "Nik Graf",
@@ -38,16 +40,18 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@types/lodash": "^4.14.168",
+    "@popperjs/core": "^2.9.2",
+    "@types/lodash": "^4.14.171",
     "clsx": "^1.0.4",
     "immutable": "~3.7.4",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
-    "prop-types": "^15.5.8"
+    "prop-types": "^15.5.8",
+    "react-popper": "^2.2.5"
   },
   "peerDependencies": {
     "draft-js": "^0.10.1 || ^0.11.0",
-    "react": "^16.3.0 || ^17.0.0"
+    "react": "^16.8.0 || ^17.0.0"
   },
   "devDependencies": {},
   "publishConfig": {

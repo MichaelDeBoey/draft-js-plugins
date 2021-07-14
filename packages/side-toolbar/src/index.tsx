@@ -2,17 +2,28 @@ import React, { ComponentType, ReactElement, FC } from 'react';
 import { EditorState } from 'draft-js';
 import { createStore, Store } from '@draft-js-plugins/utils';
 import { EditorPlugin } from '@draft-js-plugins/editor';
+import * as PopperJS from '@popperjs/core';
+import { Modifier } from 'react-popper';
 import Toolbar, { SideToolbarChildrenProps } from './components/Toolbar';
 import { defaultTheme, SideToolbarPluginTheme } from './theme';
+import type { SideToolbarButtonProps } from './components/BlockTypeSelect/SideToolbarButton';
+import SideToolbarButton from './components/BlockTypeSelect/SideToolbarButton';
 
-export type { SideToolbarPluginTheme };
+export type { SideToolbarPluginTheme, SideToolbarButtonProps };
 
 export type SideToolbarPosition = 'left' | 'right';
 
 export interface SideToolbarPluginConfig {
   theme?: SideToolbarPluginTheme;
   position?: SideToolbarPosition;
+  popperOptions?: PopperOptions;
+  sideToolbarButtonComponent?: ComponentType<SideToolbarButtonProps>;
 }
+
+export type PopperOptions = Omit<Partial<PopperJS.Options>, 'modifiers'> & {
+  createPopper?: typeof PopperJS.createPopper;
+  modifiers?: ReadonlyArray<Modifier<unknown>>;
+};
 
 export interface SideToolbarProps {
   children?: FC<SideToolbarChildrenProps>;
@@ -42,10 +53,22 @@ export default (config: SideToolbarPluginConfig = {}): SideToolbarPlugin => {
     isVisible: false,
   });
 
-  const { position = defaultPostion, theme = defaultTheme } = config;
+  const {
+    position = defaultPostion,
+    theme = defaultTheme,
+    sideToolbarButtonComponent = SideToolbarButton,
+    popperOptions,
+  } = config;
 
   const SideToolbar = (props: SideToolbarProps): ReactElement => (
-    <Toolbar {...props} store={store} theme={theme} position={position} />
+    <Toolbar
+      {...props}
+      store={store}
+      theme={theme}
+      position={position}
+      popperOptions={popperOptions}
+      sideToolbarButtonComponent={sideToolbarButtonComponent}
+    />
   );
 
   return {

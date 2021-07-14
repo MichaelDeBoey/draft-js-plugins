@@ -5,6 +5,18 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## To be released
 
+## 5.0.2
+
+- add `sideEffects` for css files [#1833](https://github.com/draft-js-plugins/draft-js-plugins/issues/1833)
+
+## 5.0.1
+
+- Fixing issue with incorrect sizes [#2105](https://github.com/draft-js-plugins/draft-js-plugins/issues/2105)
+
+## 5.0.0
+
+- Update to hooks and remove `ReactDOM.findDOMNode`, the required react version is 16.8 [#1979](https://github.com/draft-js-plugins/draft-js-plugins/issues/1979)
+
 ## 4.1.0
 
 - add "sideEffects": false for tree shaking
